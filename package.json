@@ -1,0 +1,12 @@
+{
+	"scripts": {
+		"test": "eslint --cache 'src/**/*.mjs' && echo ✓"
+	},
+	"engines": {
+		"node": ">=8.5.0"
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"eslint-config-fnd": "^1.2.0"
+	}
+}

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+base=`dirname "$0"`
+root="$base/.."
+
+if [ "$1" = "--dev" ]; then
+	export NODE_ENV="development"
+	echo "activating development mode"
+fi
+
+node --experimental-modules --trace-warnings "$root/src/importer/index.mjs"
