@@ -11,7 +11,7 @@ export default {
 		cost: common.cost,
 		range: slot("range", { optional: true }),
 		text: common.text,
-		set: null,
+		set: common.set,
 		limit: null
 	}
 };

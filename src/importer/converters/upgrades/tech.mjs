@@ -16,7 +16,7 @@ export default {
 		talents: slot("talents", { optional: [undefined, null] }),
 		range: slot("range", { optional: [undefined, ""] }),
 		text: common.text,
-		set: null,
+		set: common.set,
 		factionPenalty: null,
 		limit: null,
 		hasTokenInfo: null,

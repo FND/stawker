@@ -18,7 +18,7 @@ export default {
 		range: slot(ensureRange, { optional: [undefined, ""] }),
 		arc: slot(ensureArc, { optional: true }),
 		text: common.text,
-		set: null,
+		set: common.set,
 		factionPenalty: null,
 		limit: null,
 		intercept: null

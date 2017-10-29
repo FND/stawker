@@ -1,18 +1,17 @@
 import { repr } from "./util";
 
-export function ensureArray(value, { permitted }, errMsg) {
+export function ensureArray(value, { validator, permitted }, errMsg) {
 	if(!value || !value.pop) {
 		abort(errMsg, value);
 	}
 
-	value.forEach(item => {
-		if(!permitted.has(item)) {
+	return value.map(item => {
+		if(permitted && !permitted.has(item)) {
 			let err = rpr => errMsg(`${repr(item)} in ${rpr}`);
 			abort(err, value);
 		}
+		return validator ? validator(item, errMsg) : item;
 	});
-
-	return value;
 }
 
 export function ensureKeys(value, expected, errMsg) {

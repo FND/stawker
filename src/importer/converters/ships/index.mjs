@@ -43,7 +43,7 @@ const SOURCE_DESCRIPTOR = {
 		actions: (value, error) => ensureArray(value, { permitted: ACTIONS }, error),
 		upgrades: (value, error) => ensureArray(value, { permitted: UPGRADES }, error),
 		text: slot("text", { optional: [""] }),
-		set: null,
+		set: common.set,
 		intercept: null
 	}
 };

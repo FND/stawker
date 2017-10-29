@@ -13,7 +13,7 @@ const SOURCE_DESCRIPTOR = {
 		skill: common.skill,
 		talents: common.talents,
 		text: common.text,
-		set: null,
+		set: common.set,
 		factionPenalty: null,
 		intercept: null
 	}

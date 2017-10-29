@@ -51,7 +51,9 @@ export let common = {
 		value = ensureNonEmptyString(value, errMsg);
 		validateMarkup(value);
 		return value;
-	}
+	},
+	set: (value, errMsg) => ensureArray(value,
+			{ validator: ensureNonEmptyString }, errMsg)
 };
 
 // XXX: crude and not necessarily foolproof

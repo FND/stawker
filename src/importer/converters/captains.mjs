@@ -14,7 +14,7 @@ const SOURCE_DESCRIPTOR = {
 		talents: common.talents,
 		range: slot("range", { optional: true }),
 		text: slot("text", { optional: [""] }),
-		set: null,
+		set: common.set,
 		factionPenalty: null,
 		intercept: null
 	}

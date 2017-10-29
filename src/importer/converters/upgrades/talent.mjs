@@ -14,7 +14,7 @@ export default {
 		talents: slot("talents", { optional: true }),
 		range: slot("range", { optional: [undefined, ""] }),
 		text: common.text,
-		set: null,
+		set: common.set,
 		factionPenalty: null,
 		intercept: null
 	}

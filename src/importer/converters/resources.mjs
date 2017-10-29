@@ -9,7 +9,7 @@ const SOURCE_DESCRIPTOR = {
 		name: common.name,
 		cost: common.cost,
 		text: common.text,
-		set: null,
+		set: common.set,
 		showShipResourceSlot: null
 	}
 };
