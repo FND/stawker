@@ -10,7 +10,9 @@ export default (payload, { type, model, slots }, factory) => {
 		return repr => `invalid \`${slot}\` for \`${model.name}\`${entity}: ${repr}`;
 	};
 
-	id = ensureNonEmptyString(payload.id, errMsg("id"));
+	// cf. https://html.spec.whatwg.org/multipage/dom.html#the-id-attribute
+	id = ensureNonEmptyString(payload.id, errMsg("id")).
+		replace(/ /g, "_");
 	if(payload.type !== type) {
 		throw new Error(errMsg("type")(type));
 	}
