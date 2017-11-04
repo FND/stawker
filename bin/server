@@ -8,4 +8,4 @@ if [ "$1" = "--dev" ]; then
 	echo "activating development mode"
 fi
 
-node --experimental-modules --trace-warnings "$root/src/importer/index.mjs"
+"$root/src/server/index.mjs"

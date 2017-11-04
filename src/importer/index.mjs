@@ -17,18 +17,7 @@ const TOP_LEVEL_KEYS = ["ships", "shipClasses", "captains", "admirals",
 		"upgrades", "resources", "sets", "others"];
 /* eslint-enable indent */
 
-main();
-
-async function main() {
-	try {
-		await run();
-	} catch(err) {
-		console.error(err);
-		process.exit(1);
-	}
-}
-
-async function run() { // TODO: rename
+export default async function retrieveCards() {
 	let cards = await retrieveJSON(SOURCE);
 
 	ensureKeys(cards, TOP_LEVEL_KEYS,

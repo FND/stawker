@@ -1,11 +1,15 @@
 {
 	"scripts": {
+		"start": "./bin/server",
+		"dev": "./bin/server --dev",
 		"test": "eslint --cache 'src/**/*.mjs' && echo ✓"
 	},
 	"engines": {
 		"node": ">=8.5.0"
 	},
-	"dependencies": {},
+	"dependencies": {
+		"express": "^4.16.2"
+	},
 	"devDependencies": {
 		"eslint-config-fnd": "^1.2.0"
 	}
