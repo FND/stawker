@@ -7,11 +7,12 @@ export default {
 	slots: {
 		name: common.name,
 		factions: common.factions,
-		unique: common.unique,
+		unique: slot("unique", { optional: true }),
 		cost: common.cost,
 		range: slot("range", { optional: true }),
 		text: common.text,
 		set: common.set,
+		OnePerShip: null,
 		limit: null
 	}
 };

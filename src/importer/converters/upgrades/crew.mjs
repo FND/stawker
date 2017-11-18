@@ -7,7 +7,7 @@ export default {
 	slots: {
 		name: common.name,
 		factions: common.factions,
-		unique: common.unique,
+		unique: slot("unique", { optional: true }),
 		cost: common.cost,
 		attack: slot("attack", { optional: [undefined, null] }),
 		skill: slot("skill", { optional: [undefined, null] }),
@@ -16,6 +16,7 @@ export default {
 		text: common.text,
 		set: common.set,
 		factionPenalty: null,
+		factionDominion: null,
 		intercept: null
 	}
 };

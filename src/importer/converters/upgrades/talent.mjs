@@ -16,6 +16,8 @@ export default {
 		text: common.text,
 		set: common.set,
 		factionPenalty: null,
-		intercept: null
+		factionDominion: null,
+		intercept: null,
+		hullConstraint: null
 	}
 };
