@@ -19,6 +19,8 @@ export default {
 		set: common.set,
 		factionPenalty: null,
 		OnePerShip: null,
+		costRomulan: null,
+		shipDominion: null,
 		limit: null,
 		hasTokenInfo: null,
 		tokenId: null,

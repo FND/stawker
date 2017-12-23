@@ -34,7 +34,7 @@ const SOURCE_DESCRIPTOR = {
 			}
 		},
 		factions: common.factions,
-		unique: common.unique,
+		unique: slot("unique", { optional: true }),
 		cost: common.cost,
 		attack: common.attack,
 		agility: ensureInteger,

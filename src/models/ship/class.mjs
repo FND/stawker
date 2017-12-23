@@ -5,7 +5,8 @@ export default class ShipClass extends Card {
 		super(fields);
 		this.arcs = {
 			front: fields.frontArc,
-			rear: fields.rearArc
+			secondary: fields.secondArc,
+			rear: fields.rearArc // TODO: combine with `secondary`?
 		};
 	}
 }

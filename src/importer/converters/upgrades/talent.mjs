@@ -7,7 +7,7 @@ export default {
 	slots: {
 		name: common.name,
 		factions: common.factions,
-		unique: common.unique,
+		unique: slot("unique", { optional: true }),
 		cost: common.cost,
 		attack: slot("attack", { optional: true }),
 		skill: slot("skill", { optional: true }),
@@ -16,7 +16,12 @@ export default {
 		text: common.text,
 		set: common.set,
 		factionPenalty: null,
-		factionDominion: null,
+		OnePerShip: null,
+		captainKlingon: null,
+		captainRomulan: null,
+		captainBorg: null,
+		shipDominion: null,
+		shipBorg: null,
 		intercept: null,
 		hullConstraint: null
 	}

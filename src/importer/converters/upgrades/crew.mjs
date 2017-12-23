@@ -16,7 +16,9 @@ export default {
 		text: common.text,
 		set: common.set,
 		factionPenalty: null,
-		factionDominion: null,
+		OnePerShip: null,
+		shipKlingon: null,
+		shipDominion: null,
 		intercept: null
 	}
 };

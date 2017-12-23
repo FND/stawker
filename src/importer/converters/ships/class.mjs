@@ -11,7 +11,8 @@ const SOURCE_DESCRIPTOR = {
 	slots: {
 		name: common.name,
 		frontArc: ensureArc,
-		rearArc: ensureArc,
+		rearArc: slot(ensureArc, { optional: true }),
+		secondArc: slot(ensureArc, { optional: true }),
 		maneuvers: null
 	}
 };
