@@ -1,6 +1,6 @@
 import TechUpgrade from "../../../models/upgrade/tech";
 import slot, { common } from "../slots";
-import { ensureNonEmptyString } from "../../validation";
+import { ensureNonEmptyString, ensureBoolean } from "../../validation";
 
 export default {
 	type: "tech",
@@ -15,10 +15,12 @@ export default {
 		skill: slot("skill", { optional: [undefined, null] }),
 		talents: slot("talents", { optional: [undefined, null] }),
 		range: slot("range", { optional: [undefined, ""] }),
+		arc360: slot(ensureBoolean, { optional: true }),
 		text: common.text,
 		set: common.set,
 		factionPenalty: null,
 		OnePerShip: null,
+		shipLimit: null,
 		costRomulan: null,
 		shipDominion: null,
 		limit: null,

@@ -1,4 +1,5 @@
 import Card from "../card";
+import { determineArcs } from "./util";
 
 export default class WeaponUpgrade extends Card {
 	static get slots() {
@@ -8,10 +9,6 @@ export default class WeaponUpgrade extends Card {
 
 	constructor(fields) {
 		super(fields);
-		let arcs = new Set(fields.arc);
-		this.arcs = {
-			front: arcs.has("front"),
-			rear: arcs.has("rear")
-		};
+		this.arcs = determineArcs(fields);
 	}
 }

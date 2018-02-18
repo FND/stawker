@@ -14,7 +14,7 @@ const SOURCE = process.env.NODE_ENV === "development" ?
 
 /* eslint-disable indent */
 const TOP_LEVEL_KEYS = ["ships", "shipClasses", "captains", "admirals",
-		"upgrades", "resources", "sets", "others"];
+		"upgrades", "resources", "sets", "missions", "missionSets", "others"];
 /* eslint-enable indent */
 
 export default async function retrieveCards() {

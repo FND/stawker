@@ -13,6 +13,7 @@ export default {
 		text: common.text,
 		set: common.set,
 		OnePerShip: null,
+		shipIndependent: null,
 		limit: null
 	}
 };

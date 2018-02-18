@@ -1,6 +1,6 @@
 import WeaponUpgrade from "../../../models/upgrade/weapon";
 import slot, { common } from "../slots";
-import { ensureArray } from "../../validation";
+import { ensureArray, ensureBoolean } from "../../validation";
 
 const ARCS = new Set(["front", "rear"]);
 
@@ -17,10 +17,12 @@ export default {
 		talents: slot("talents", { optional: true }),
 		range: slot(ensureRange, { optional: [undefined, ""] }),
 		arc: slot(ensureArc, { optional: true }),
+		arc360: slot(ensureBoolean, { optional: true }),
 		text: common.text,
 		set: common.set,
 		factionPenalty: null,
 		OnePerShip: null,
+		shipLimit: null,
 		limit: null,
 		intercept: null,
 		FrontArc: null,

@@ -11,12 +11,13 @@ const SOURCE_DESCRIPTOR = {
 		unique: common.unique,
 		cost: common.cost,
 		skill: slot("skill", { permitted: ["*"] }),
-		talents: common.talents,
+		talents: slot("talents", { optional: true }),
 		range: slot("range", { optional: true }),
 		text: slot("text", { optional: [""] }),
 		set: common.set,
 		factionPenalty: null,
-		intercept: null
+		intercept: null,
+		shipLimit: null
 	}
 };
 

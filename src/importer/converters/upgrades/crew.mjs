@@ -17,6 +17,7 @@ export default {
 		set: common.set,
 		factionPenalty: null,
 		OnePerShip: null,
+		captainFerengi: null,
 		shipKlingon: null,
 		shipDominion: null,
 		intercept: null
