@@ -10,6 +10,6 @@ main();
 async function main() {
 	let server = app.listen(PORT, HOST, _ => {
 		let { address, port } = server.address();
-		console.log(`→ http://${address}:${port}`); // eslint-disable-line no-console
+		console.error(`→ http://${address}:${port}`); // eslint-disable-line no-console
 	});
 }

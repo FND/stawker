@@ -59,7 +59,7 @@ export let common = {
 // XXX: crude and not necessarily foolproof
 function validateMarkup(txt) {
 	txt.replace(/<[^>]+>/ig, match => {
-		if(!TAGS.has(match)) {
+		if(!TAGS.has(match.toLowerCase())) {
 			throw new Error(`invalid markup: ${repr(match)} in ${repr(txt)}`);
 		}
 	});

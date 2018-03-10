@@ -23,6 +23,7 @@ export default {
 		factionPenalty: null,
 		OnePerShip: null,
 		shipLimit: null,
+		shipDominion: null,
 		limit: null,
 		intercept: null,
 		FrontArc: null,
