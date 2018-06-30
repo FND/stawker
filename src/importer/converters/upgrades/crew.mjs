@@ -15,9 +15,12 @@ export default {
 		range: slot("range", { optional: [undefined, ""] }),
 		text: common.text,
 		set: common.set,
+		opBanned: null,
+		talent: null, // FIXME: faulty data; should be `talents`
 		factionPenalty: null,
 		OnePerShip: null,
 		captainFerengi: null,
+		shipLimit: null,
 		shipKlingon: null,
 		shipDominion: null,
 		intercept: null

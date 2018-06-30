@@ -44,7 +44,8 @@ const SOURCE_DESCRIPTOR = {
 		upgrades: (value, error) => ensureArray(value, { permitted: UPGRADES }, error),
 		text: slot("text", { optional: [""] }),
 		set: common.set,
-		intercept: null
+		intercept: null,
+		opBanned: null
 	}
 };
 

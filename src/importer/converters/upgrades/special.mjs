@@ -12,8 +12,10 @@ export default {
 		range: slot("range", { optional: true }),
 		text: common.text,
 		set: common.set,
+		factionPenalty: null,
 		OnePerShip: null,
 		shipIndependent: null,
-		limit: null
+		limit: null,
+		countsAsUpgrade: null // TODO: ??
 	}
 };

@@ -22,6 +22,7 @@ export default {
 		captainFerengi: null,
 		captainBorg: null,
 		shipLimit: null,
+		shipKlingon: null,
 		shipDominion: null,
 		shipBorg: null,
 		intercept: null,

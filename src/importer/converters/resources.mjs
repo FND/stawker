@@ -10,6 +10,7 @@ const SOURCE_DESCRIPTOR = {
 		cost: common.cost,
 		text: common.text,
 		set: common.set,
+		opBanned: null,
 		showShipResourceSlot: null
 	}
 };
