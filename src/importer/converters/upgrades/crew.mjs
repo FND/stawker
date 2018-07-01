@@ -16,7 +16,6 @@ export default {
 		text: common.text,
 		set: common.set,
 		opBanned: null,
-		talent: null, // FIXME: faulty data; should be `talents`
 		factionPenalty: null,
 		OnePerShip: null,
 		captainFerengi: null,
