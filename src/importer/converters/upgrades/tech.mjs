@@ -22,6 +22,7 @@ export default {
 		factionPenalty: null,
 		OnePerShip: null,
 		shipLimit: null,
+		shipKlingon: null,
 		costRomulan: null,
 		shipDominion: null,
 		limit: null,

@@ -17,7 +17,8 @@ const SOURCE_DESCRIPTOR = {
 		set: common.set,
 		factionPenalty: null,
 		intercept: null,
-		shipLimit: null
+		shipLimit: null,
+		specialization: null
 	}
 };
 

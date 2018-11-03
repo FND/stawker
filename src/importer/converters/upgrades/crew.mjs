@@ -22,6 +22,7 @@ export default {
 		shipLimit: null,
 		shipKlingon: null,
 		shipDominion: null,
-		intercept: null
+		intercept: null,
+		specialization: null
 	}
 };

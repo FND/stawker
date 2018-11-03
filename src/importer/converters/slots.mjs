@@ -46,7 +46,12 @@ export let common = {
 	attack: ensureInteger,
 	skill: ensureInteger,
 	talents: ensureInteger,
-	range: ensureNonEmptyString,
+	range: (value, errMsg) => {
+		if(Number.isInteger(value)) {
+			value = `${value}`;
+		}
+		return ensureNonEmptyString(value, errMsg);
+	},
 	text: (value, errMsg) => {
 		value = ensureNonEmptyString(value, errMsg);
 		validateMarkup(value);

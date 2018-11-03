@@ -20,6 +20,7 @@ export default {
 		arc360: slot(ensureBoolean, { optional: true }),
 		text: common.text,
 		set: common.set,
+		attackConstraint: null, // TODO
 		factionPenalty: null,
 		OnePerShip: null,
 		shipLimit: null,
