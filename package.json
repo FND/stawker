@@ -1,0 +1,16 @@
+{
+	"scripts": {
+		"start": "src/import/index.js",
+		"test": "eslint --cache src && echo ✓"
+	},
+	"engines": {
+		"node": ">=8.5.0"
+	},
+	"dependencies": {
+		"esm": "^3.0.84"
+	},
+	"devDependencies": {
+		"declepticon": "^0.9.0",
+		"eslint-config-fnd": "^1.6.0"
+	}
+}
