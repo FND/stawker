@@ -1,21 +1,33 @@
 import mutaraCard from "./card";
 import mutaraShipClass from "./ship_class";
-import { loadLocal } from "../../util";
-import { mutara } from "../../config";
-import { transformation, validators, log, repr } from "declepticon";
+import { load, setUnique } from "../util";
+import { mutara as config } from "../../config";
+import { transformation, validators, log } from "declepticon";
 
-let TOP_LEVEL_KEYS = ["cards", "classes"];
+let { array } = validators;
+let root = {
+	name: "Mutara",
+	fields: {
+		cards: array,
+		classes: () => true
+	},
+	slots: {
+		cards: true,
+		classes: true
+	}
+};
 
 export default async function loadCards() {
-	let { cards, classes } = await load();
+	let { cards, classes } = await load(config, root);
 	log.info(`Mutara: importing ${cards.length} cards, ` +
 			`${Object.keys(classes).length} ship classes`);
 
 	// index ship classes by name
 	let makeShipClass = transformation(mutaraShipClass);
+	let desc = mutaraShipClass.name;
 	classes = Object.values(classes).reduce((memo, shipClass) => {
 		shipClass = makeShipClass(shipClass);
-		memo.set(shipClass.name, shipClass);
+		setUnique(memo, shipClass.name, shipClass, desc);
 		return memo;
 	}, new Map());
 
@@ -34,12 +46,4 @@ export default async function loadCards() {
 
 		return memo;
 	}, new Map());
-}
-
-async function load() {
-	let data = await loadLocal(mutara.uri, mutara.mirror);
-	validators.objectKeys(data, TOP_LEVEL_KEYS, (type, diff) => {
-		log.warn(`Mutara: ${type} entries ${repr(diff, true)}`);
-	});
-	return data;
 }

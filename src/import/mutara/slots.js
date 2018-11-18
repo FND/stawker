@@ -1,8 +1,11 @@
+import { ensureFaction } from "../common_slots";
+
 let CARD_TYPES = new Set(["ship", "captain", "admiral", "upgrade", "special"]);
 
-let FACTIONS = new Set(["bajoran", "borg", "dominion", "federation", "ferengi",
-	"independent", "klingon", "kazon", "mirror universe", "romulan",
-	"species 8472", "vulcan", "xindi"]);
+let FACTIONS = { // normalization
+	"mirror universe": "mirror-universe",
+	"species 8472": "species-8472"
+};
 
 export function ensureCardType(value) {
 	return CARD_TYPES.has(value);
@@ -14,10 +17,8 @@ export function resolveFactions(value) {
 
 export function ensureFactions(value) {
 	let values = value && csv(value);
-	if(values) {
-		return !values.some(faction => !FACTIONS.has(faction));
-	}
-	return FACTIONS.has(value);
+	let check = faction => ensureFaction(FACTIONS[faction] || faction);
+	return values ? values.every(check) : check(value);
 }
 
 export function ensureDateString(value) {
