@@ -1,5 +1,5 @@
 import { resolveSets, ensureMarkup } from "./slots";
-import { ensureFaction } from "../common_slots";
+import { ensureFaction, sanitizedString } from "../common_slots";
 import { warn } from "../../util";
 import { optional, eager, validators, repr } from "declepticon";
 
@@ -14,10 +14,10 @@ export default {
 	name: "UtopiaShip",
 	fields: {
 		type: "ship",
-		id: nonBlankString,
-		name: nonBlankString,
-		classId: optional(nonBlankString),
-		class: nonBlankString,
+		id: sanitizedString,
+		name: sanitizedString,
+		classId: optional(sanitizedString),
+		class: nonBlankString, // XXX: sanitize strings within Utopia
 		factions: arrayOf(ensureFaction),
 		text: ensureMarkup,
 		unique: optional(boolean),
@@ -30,7 +30,7 @@ export default {
 		shields: integer,
 		squadron: boolean,
 		skill: optional(integer),
-		set: optional(arrayOf(nonBlankString)),
+		set: optional(arrayOf(sanitizedString)),
 		intercept: optional(value => JSON.stringify(value) === '{"ship":{},"fleet":{}}'),
 		opBanned: optional(true)
 	},

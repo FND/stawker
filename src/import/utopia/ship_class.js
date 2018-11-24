@@ -1,3 +1,4 @@
+import { sanitizedString } from "../common_slots";
 import { ignoreField as ignore } from "../util";
 import { optional, eager, validators } from "declepticon";
 
@@ -7,8 +8,8 @@ export default {
 	name: "UtopiaShipClass",
 	fields: {
 		type: "ship-class",
-		id: nonBlankString,
-		name: nonBlankString,
+		id: sanitizedString,
+		name: nonBlankString, // XXX: sanitize strings within Utopia
 		frontArc: [integerString, ""],
 		secondArc: optional(integerString),
 		rearArc: optional(integerString, ""),

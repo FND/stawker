@@ -1,12 +1,12 @@
 import { resolveSets, ensureMarkup } from "../slots";
-import { ensureFaction } from "../../common_slots";
+import { ensureFaction, sanitizedString } from "../../common_slots";
 import { merge } from "../../util";
 import { optional, eager, validators } from "declepticon";
 
 let { arrayOf, nonBlankString, string, integer, boolean } = validators;
 
 let fields = {
-	id: nonBlankString,
+	id: sanitizedString,
 	name: nonBlankString,
 	factions: arrayOf(ensureFaction),
 	text: ensureMarkup,
@@ -21,11 +21,11 @@ let fields = {
 	FrontArc: optional(true),
 	RearArc: optional(true),
 	arc360: optional(true),
-	attackConstraint: optional(nonBlankString),
-	hullConstraint: optional(nonBlankString),
-	set: arrayOf(nonBlankString),
+	attackConstraint: optional(sanitizedString),
+	hullConstraint: optional(sanitizedString),
+	set: arrayOf(sanitizedString),
 	factionPenalty: optional(0),
-	costRomulan: optional(nonBlankString),
+	costRomulan: optional(sanitizedString),
 	shipKlingon: optional(true),
 	shipDominion: optional(true),
 	shipBorg: optional(true),
@@ -38,14 +38,14 @@ let fields = {
 	captainBorg: optional(true),
 	countsAsUpgrade: optional(boolean),
 	hasTokenInfo: optional(true),
-	tokenId: optional(nonBlankString),
+	tokenId: optional(sanitizedString),
 	specialization: optional(true),
 	intercept: optional(value => JSON.stringify(value) === '{"ship":{},"fleet":{}}'),
 	opBanned: optional(boolean)
 };
 let slots = {
 	id: eager,
-	name: eager,
+	name: eager(({ name }) => name.trim()), // XXX: sanitize strings within Utopia
 	factions: true,
 	text: ({ text }) => text.trim() || null,
 	unique: ({ unique }) => !!unique,

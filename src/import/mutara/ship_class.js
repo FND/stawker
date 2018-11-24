@@ -1,17 +1,18 @@
 import { resolveFactions, ensureFactions, ensureDateString } from "./slots";
+import { sanitizedString } from "../common_slots";
 import { struct, eager, validators } from "declepticon";
 
-let { nonBlankString, string, integer, boolean } = validators;
+let { string, integer, boolean } = validators;
 
 export default {
 	name: "MutaraShipClass",
 	fields: {
 		id: integer,
 		type: "shipclass",
-		name: nonBlankString,
-		originalName: [nonBlankString, null],
+		name: sanitizedString,
+		originalName: [sanitizedString, null],
 		faction: [ensureFactions, null],
-		class: nonBlankString,
+		class: sanitizedString,
 		data: [struct("MutaraShipClassData", {
 			cost: "",
 			utopiaId: ""

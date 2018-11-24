@@ -1,16 +1,15 @@
-import { optional, eager, validators } from "declepticon";
-
-let { nonBlankString } = validators;
+import { sanitizedString } from "../common_slots";
+import { optional, eager } from "declepticon";
 
 export default {
 	name: "UtopiaSet",
 	fields: {
 		type: "set",
-		id: nonBlankString,
-		name: nonBlankString,
+		id: sanitizedString,
+		name: sanitizedString,
 		releaseDate: ensureDateString,
-		parentSet: nonBlankString,
-		comment: optional(nonBlankString)
+		parentSet: sanitizedString,
+		comment: optional(sanitizedString)
 	},
 	slots: {
 		id: eager,

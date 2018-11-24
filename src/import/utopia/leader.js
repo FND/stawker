@@ -1,20 +1,20 @@
 import { resolveSets, ensureMarkup } from "./slots";
-import { ensureFaction } from "../common_slots";
+import { ensureFaction, sanitizedString } from "../common_slots";
 import { merge } from "../util";
 import { optional, eager, validators } from "declepticon";
 
-let { arrayOf, nonBlankString, integer, boolean } = validators;
+let { arrayOf, integer, boolean } = validators;
 
 let fields = {
-	id: nonBlankString,
-	name: nonBlankString,
+	id: sanitizedString,
+	name: sanitizedString,
 	factions: arrayOf(ensureFaction),
 	text: ensureMarkup,
 	unique: boolean,
 	cost: integer,
 	talents: optional(integer),
 	factionPenalty: optional(0),
-	set: arrayOf(nonBlankString),
+	set: arrayOf(sanitizedString),
 	intercept: optional(value => JSON.stringify(value) === '{"ship":{},"fleet":{}}')
 };
 let slots = {
@@ -36,7 +36,7 @@ export let captain = {
 		skill: [integer, "*"],
 		shipLimit: optional(true),
 		specialization: optional(true),
-		range: optional(integer, nonBlankString)
+		range: optional(integer, sanitizedString)
 	}),
 	slots: merge(slots, {
 		skill: true,

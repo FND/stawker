@@ -1,17 +1,18 @@
 import { ensureCardType, resolveFactions, ensureFactions,
 		ensureDateString } from "./slots";
+import { sanitizedString } from "../common_slots";
 import { warn } from "../../util";
 import { struct, optional, skipSlot, eager, validators } from "declepticon";
 
-let { arrayOf, nonBlankString, string, integerString, integer, boolean } = validators;
+let { arrayOf, string, integerString, integer, boolean } = validators;
 
 export default {
 	name: "MutaraCard",
 	fields: {
 		id: integer,
 		type: ensureCardType,
-		name: nonBlankString,
-		originalName: [nonBlankString, null],
+		name: sanitizedString,
+		originalName: [sanitizedString, null],
 		faction: ensureFactions,
 		class: [string, null],
 		skill: optional(integer, integerString, ""),
@@ -19,7 +20,7 @@ export default {
 			cost: optional(integer, integerString, ""),
 			skill: optional(integer, integerString, ""),
 			flipSide: optional(integer),
-			sets: optional(arrayOf(nonBlankString)),
+			sets: optional(arrayOf(sanitizedString)),
 			utopiaId: optional(string)
 		}), "", null],
 		errata: [string, null],
