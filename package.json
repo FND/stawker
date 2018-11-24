@@ -10,7 +10,7 @@
 		"esm": "^3.0.84"
 	},
 	"devDependencies": {
-		"declepticon": "^0.9.0",
+		"declepticon": "^1.0.0",
 		"eslint-config-fnd": "^1.6.0",
 		"fast-levenshtein": "^2.0.6"
 	}

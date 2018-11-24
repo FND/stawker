@@ -1,4 +1,5 @@
-import { validators, log, repr } from "declepticon";
+import { warn } from "../../util";
+import { validators, repr } from "declepticon";
 
 let { string } = validators;
 
@@ -10,7 +11,7 @@ export function resolveSets(value, sets) {
 		if(set) {
 			memo.push(set);
 		} else {
-			log.warn(`${this}: missing set ${repr(id)}`);
+			warn(`${this}: missing set ${repr(id)}`);
 		}
 		return memo;
 	}, []);
@@ -24,7 +25,7 @@ export function ensureMarkup(value) {
 
 	value.replace(/<[^>]+>/ig, match => {
 		if(!TAGS.has(match.toLowerCase())) {
-			log.warn(`${this}: invalid markup ${repr(match)} in ${repr(value)}`);
+			warn(`${this}: invalid markup ${repr(match)} in ${repr(value)}`);
 			valid = false;
 		}
 	});

@@ -1,6 +1,7 @@
 import { resolveSets, ensureMarkup } from "./slots";
 import { ensureFaction } from "../common_slots";
-import { optional, eager, validators, log, repr } from "declepticon";
+import { warn } from "../../util";
+import { optional, eager, validators, repr } from "declepticon";
 
 let { arrayOf, nonBlankString, integer, boolean } = validators;
 
@@ -62,7 +63,7 @@ export default {
 function ingestSquadronSkill({ skill, squadron }) {
 	let nonBlank = skill || skill === 0;
 	if(nonBlank && !squadron) {
-		log.warn(`${this}: unexpected skill ${repr(skill)} for non-squadron ship`);
+		warn(`${this}: unexpected skill ${repr(skill)} for non-squadron ship`);
 	}
 	return nonBlank ? skill : null;
 }
@@ -70,8 +71,8 @@ function ingestSquadronSkill({ skill, squadron }) {
 function resolveShipClass({ classId, class: klass }, { shipClasses }) {
 	let cls = shipClasses.byID.get(classId) || shipClasses.byName.get(klass);
 	if(!cls) {
-		log.warn(`${this}: missing ship class for ID ${repr(classId)}` +
-				` or name ${repr(klass)}`);
+		warn(`${this}: missing ship class for ID ${repr(classId)} or name ` +
+				repr(klass));
 		return null;
 	}
 	return cls;

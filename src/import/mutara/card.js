@@ -1,6 +1,7 @@
 import { ensureCardType, resolveFactions, ensureFactions,
 		ensureDateString } from "./slots";
-import { struct, optional, skipSlot, eager, validators, log } from "declepticon";
+import { warn } from "../../util";
+import { struct, optional, skipSlot, eager, validators } from "declepticon";
 
 let { arrayOf, nonBlankString, string, integerString, integer, boolean } = validators;
 
@@ -52,7 +53,7 @@ function ingestShipClass({ type, class: klass }, shipClasses) {
 
 	let cls = shipClasses.get(klass) || null;
 	if(!cls) {
-		log.warn(`${this} has no associated ship class`);
+		warn(`${this} has no associated ship class`);
 	}
 	return cls;
 }

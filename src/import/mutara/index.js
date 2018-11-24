@@ -1,8 +1,9 @@
 import mutaraCard from "./card";
 import mutaraShipClass from "./ship_class";
 import { load, setUnique } from "../util";
+import { report } from "../../util";
 import { mutara as config } from "../../config";
-import { transformation, validators, log } from "declepticon";
+import { transformation, validators } from "declepticon";
 
 let { array } = validators;
 let root = {
@@ -19,7 +20,7 @@ let root = {
 
 export default async function loadCards() {
 	let { cards, classes } = await load(config, root);
-	log.info(`Mutara: importing ${cards.length} cards, ` +
+	report(`Mutara: importing ${cards.length} cards, ` +
 			`${Object.keys(classes).length} ship classes`);
 
 	// index ship classes by name

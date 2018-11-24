@@ -1,5 +1,5 @@
-import { loadLocal } from "../util";
-import { transformation, log, repr } from "declepticon";
+import { warn, loadLocal } from "../util";
+import { transformation, repr } from "declepticon";
 
 export async function load({ uri, mirror }, descriptor) {
 	let data = await loadLocal(uri, mirror);
@@ -9,7 +9,7 @@ export async function load({ uri, mirror }, descriptor) {
 
 export function setUnique(map, key, value, type) {
 	if(map.has(key)) {
-		log.warn(`duplicate ${type} ${repr(key)}`);
+		warn(`duplicate ${type} ${repr(key)}`);
 	}
 	map.set(key, value);
 }

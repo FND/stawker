@@ -5,8 +5,9 @@ import utopiaUpgradeRegistry from "./upgrades";
 import utopiaResource from "./resource";
 import utopiaSet from "./set";
 import { load, setUnique } from "../util";
+import { report } from "../../util";
 import { utopia as config } from "../../config";
-import { transformation, validators, log } from "declepticon";
+import { transformation, validators } from "declepticon";
 
 let KNOWN_DUPE_SHIP_CLASS = "Maquis Raider";
 
@@ -44,7 +45,7 @@ export default async function loadCards() {
 		"ship classes": shipClasses, captains, admirals, upgrades, resources, sets };
 	Object.entries(byType).forEach(([type, items]) => {
 		let count = `${items.length}`.padStart(4); // XXX: hard-coded
-		log.info(`Utopia: importing ${count} ${type}`);
+		report(`Utopia: importing ${count} ${type}`);
 	});
 
 	let cards = new Map();
