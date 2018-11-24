@@ -1,61 +1,45 @@
-#!/usr/bin/env node -r esm
-import loadMutaraCards from "./mutara";
-import loadUtopiaCards from "./utopia";
-import { report } from "../util";
-import levenshtein from "fast-levenshtein";
+import mutara from "./mutara";
+import utopia from "./utopia";
+import determineCandidates from "./association";
+import { report, warn } from "../util";
 import { repr } from "declepticon";
 
-main();
+export default async () => {
+	let mutaraCards = await load(mutara);
+	let utopiaCards = await load(utopia);
 
-async function main() {
-	let utopiaCards = await loadUtopiaCards();
-	utopiaCards.forEach((items, type) => {
-		let count = `${items.size}`.padStart(4); // XXX: hard-coded
-		report(`Utopia: imported ${count} ${type} cards`);
-	});
-
-	let mutaraCards = await loadMutaraCards();
-	mutaraCards.forEach((items, type) => {
-		let count = `${items.size}`.padStart(3); // XXX: hard-coded
-		report(`Mutara: imported ${count} ${type} cards`);
-	});
-
-	// calculate association candidates based on Levenshtein distance
-	utopiaCards.forEach((items, type) => {
-		let mutara = mutaraCards.get(type);
-		report(`${type}: Utopia ${items.size} vs. ${mutara ? mutara.size : 0} Mutara`);
-		if(!mutara) {
+	mutaraCards.forEach((cards, type) => {
+		let counterparts = utopiaCards.get(type);
+		counterparts = counterparts && Array.from(counterparts.values());
+		if(!counterparts || !counterparts.length) {
+			warn(`missing counterparts for ${repr(type)}`);
 			return;
 		}
 
-		mutara.forEach(entity => {
-			let { name } = entity;
-			if(!name) {
-				return;
-			}
-
-			// find matching Utopia cards
-			items.forEach(candidate => {
-				let _name = candidate.name;
-				if(!_name) {
-					return;
-				}
-
-				let match;
-				if(_name === name) {
-					match = "=";
-				} else {
-					let distance = levenshtein.get(name, _name);
-					if(distance < 2) {
-						match = "≈";
-					}
-				}
-
-				if(match) {
-					report(`[${type}] "${name}" (${repr(entity.id)}) ` +
-							`${match} "${_name}" (${repr(candidate.id)})`);
-				}
-			});
+		mutaraCards.get(type).forEach(card => {
+			let candidates = determineCandidates(card, counterparts);
+			reportCandidates(card, candidates);
 		});
 	});
+};
+
+function reportCandidates(card, candidates) {
+	if(candidates.length === 0) {
+		report(`✗ ${card}`);
+		return;
+	}
+
+	report(`✓ ${candidates.length} ${card}`, candidates.map(({ card, exact }) => {
+		let prefix = exact ? "=" : "≈";
+		return `[${prefix}] ${card.name} ${repr(card.id)}`;
+	}).join(", "));
+}
+
+async function load(loadCards) {
+	let cards = await loadCards();
+	cards.forEach((items, type) => {
+		let count = `${items.size}`.padStart(4); // XXX: hard-coded
+		report(`… imported ${count} ${type} cards`);
+	});
+	return cards;
 }

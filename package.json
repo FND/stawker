@@ -1,6 +1,6 @@
 {
 	"scripts": {
-		"start": "src/import/index.js",
+		"start": "src/index.js",
 		"test": "eslint --cache src && echo ✓"
 	},
 	"engines": {

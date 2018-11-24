@@ -5,9 +5,11 @@ import { report } from "../../util";
 import { mutara as config } from "../../config";
 import { transformation, validators } from "declepticon";
 
+let NAME = "Mutara";
+
 let { array } = validators;
 let root = {
-	name: "Mutara",
+	name: NAME,
 	fields: {
 		cards: array,
 		classes: () => true
@@ -20,7 +22,7 @@ let root = {
 
 export default async function loadCards() {
 	let { cards, classes } = await load(config, root);
-	report(`Mutara: importing ${cards.length} cards, ` +
+	report(`${NAME}: importing ${cards.length} cards, ` +
 			`${Object.keys(classes).length} ship classes`);
 
 	// index ship classes by name

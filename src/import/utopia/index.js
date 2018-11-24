@@ -9,11 +9,12 @@ import { report } from "../../util";
 import { utopia as config } from "../../config";
 import { transformation, validators } from "declepticon";
 
+let NAME = "Utopia";
 let KNOWN_DUPE_SHIP_CLASS = "Maquis Raider";
 
 let { array } = validators;
 let root = {
-	name: "Utopia",
+	name: NAME,
 	fields: {
 		ships: array,
 		shipClasses: array,
@@ -45,7 +46,7 @@ export default async function loadCards() {
 		"ship classes": shipClasses, captains, admirals, upgrades, resources, sets };
 	Object.entries(byType).forEach(([type, items]) => {
 		let count = `${items.length}`.padStart(4); // XXX: hard-coded
-		report(`Utopia: importing ${count} ${type}`);
+		report(`${NAME}: importing ${count} ${type}`);
 	});
 
 	let cards = new Map();
